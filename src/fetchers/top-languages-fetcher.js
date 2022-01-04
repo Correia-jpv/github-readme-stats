@@ -8,10 +8,12 @@ const fetcher = (variables, token) => {
       query: `
       query userInfo($login: String!) {
         user(login: $login) {
-          # fetch only owner repos & not forks
-          repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
+          # fetch both owner repos & forks
+          repositories(ownerAffiliations: OWNER, first: 100) {
             nodes {
               name
+              isPrivate
+              isFork
               languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
                 edges {
                   size
@@ -34,7 +36,12 @@ const fetcher = (variables, token) => {
   );
 };
 
-async function fetchTopLanguages(username, exclude_repo = []) {
+async function fetchTopLanguages(
+  username,
+  exclude_repo = [],
+  include_private = false,
+  include_forks = false,
+) {
   if (!username) throw Error("Invalid username");
 
   const res = await retryer(fetcher, { login: username });
@@ -46,6 +53,16 @@ async function fetchTopLanguages(username, exclude_repo = []) {
 
   let repoNodes = res.data.data.user.repositories.nodes;
   let repoToHide = {};
+
+  // filter out private repositories if needed
+  if (!include_private) {
+    repoNodes = repoNodes.filter((repo) => !repo.isPrivate);
+  }
+
+  // filter out forked repositories if needed
+  if (!include_forks) {
+    repoNodes = repoNodes.filter((isFork) => !isFork.isFork);
+  }
 
   // populate repoToHide map for quick lookup
   // while filtering out

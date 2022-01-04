@@ -77,18 +77,39 @@ Your small help goes a long way. :heart:
 
 # Features
 
+- [Features](#features)
 - [GitHub Stats Card](#github-stats-card)
+    - [Hiding individual stats](#hiding-individual-stats)
+    - [Adding private contributions count to total commits count](#adding-private-contributions-count-to-total-commits-count)
+    - [Showing icons](#showing-icons)
+    - [Themes](#themes)
+      - [All inbuilt themes :-](#all-inbuilt-themes--)
+    - [Customization](#customization)
+      - [Common Options:](#common-options)
+        - [Gradient in bg_color](#gradient-in-bg_color)
+      - [Stats Card Exclusive Options:](#stats-card-exclusive-options)
+      - [Repo Card Exclusive Options:](#repo-card-exclusive-options)
+      - [Language Card Exclusive Options:](#language-card-exclusive-options)
+      - [Wakatime Card Exclusive Options:](#wakatime-card-exclusive-options)
 - [GitHub Extra Pins](#github-extra-pins)
+    - [Usage](#usage)
+    - [Demo](#demo)
 - [Top Languages Card](#top-languages-card)
+    - [Usage](#usage-1)
+    - [Exclude individual repositories](#exclude-individual-repositories)
+    - [Include private repositories](#include-private-repositories)
+    - [Include forked repositories](#include-forked-repositories)
+    - [Hide individual languages](#hide-individual-languages)
+    - [Show more languages](#show-more-languages)
+    - [Compact Language Card Layout](#compact-language-card-layout)
+    - [Demo](#demo-1)
 - [Wakatime Week Stats](#wakatime-week-stats)
-- [Themes](#themes)
-- [Customization](#customization)
-  - [Common Options](#common-options)
-  - [Stats Card Exclusive Options](#stats-card-exclusive-options)
-  - [Repo Card Exclusive Options](#repo-card-exclusive-options)
-  - [Language Card Exclusive Options](#language-card-exclusive-options)
-  - [Wakatime Card Exclusive Option](#wakatime-card-exclusive-options)
-- [Deploy Yourself](#deploy-on-your-own-vercel-instance)
+    - [Demo](#demo-2)
+    - [All Demos](#all-demos)
+    - [Quick Tip (Align The Repo Cards)](#quick-tip-align-the-repo-cards)
+  - [Deploy on your own Vercel instance](#deploy-on-your-own-vercel-instance)
+      - [Check Out Step By Step Video Tutorial By @codeSTACKr](#check-out-step-by-step-video-tutorial-by-codestackr)
+  - [:sparkling_heart: Support the project](#sparkling_heart-support-the-project)
 
 # GitHub Stats Card
 
@@ -203,6 +224,8 @@ You can provide multiple comma-separated values in bg_color option to render a g
 - `card_width` - Set the card's width manually _(number)_
 - `langs_count` - Show more languages on the card, between 1-10, defaults to 5 _(number)_
 - `exclude_repo` - Exclude specified repositories _(Comma-separated values)_
+- `include_private` - Include private repositories _(boolean)_
+- `include_forks` - Include forked repositories _(boolean)_
 - `custom_title` - Sets a custom title for the card
 
 > :warning: **Important:**
@@ -270,6 +293,22 @@ You can use `?exclude_repo=repo1,repo2` parameter to exclude individual reposito
 
 ```md
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&exclude_repo=github-readme-stats,anuraghazra.github.io)](https://github.com/anuraghazra/github-readme-stats)
+```
+
+### Include private repositories
+
+You can use `?include_private=true` parameter to include private repositories.
+
+```md
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&include_private=true)](https://github.com/anuraghazra/github-readme-stats)
+```
+
+### Include forked repositories
+
+You can use `?include_forks=true` parameter to include forked repositories.
+
+```md
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&include_forks=true)](https://github.com/anuraghazra/github-readme-stats)
 ```
 
 ### Hide individual languages
